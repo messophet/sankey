@@ -29,4 +29,4 @@ def get_data(key):
     return {'data': data_util.get_data(key), 'key': key}
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=os.getenv('PORT'))
+    app.run(port=8080)

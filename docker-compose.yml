@@ -1,17 +1,17 @@
-version: '3.4'
+version: '3'
 
 services:
   api:
-    build: ./api/
+    build: ./api
     volumes: 
       - ./api/:/usr/src/app
     ports:
       - 8080:8080
     environment:
       PORT: 8080
+    image: backend
   client:
-    build:
-      context: .
-      dockerfile: Dockerfile.client
+    build: ./src
     ports:
       - "3000:80"
+    image: frontend

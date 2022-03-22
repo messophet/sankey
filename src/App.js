@@ -18,11 +18,14 @@ function App() {
     getData('Sales')
       .then(updateData => {
         setData(updateData['data']);
-      });
-    getData('Expenses')
+        return getData('Expenses');
+      })
       .then(updateData => {
-        setData(data => ([...data, ...updateData['data']]));
-      });
+        setData(data => ([...data, ...updateData.data]));
+      })
+      .catch(err => {
+        console.error('Request failed', err);
+      })
   }, []);
 
   const options = { 

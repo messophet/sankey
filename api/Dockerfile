@@ -1,7 +1,7 @@
-FROM python:3.9
-RUN mkdir /usr/src/app/
-COPY . /usr/src/app/
-WORKDIR /usr/src/app/
-EXPOSE 8080
+FROM python:3.7
+WORKDIR /backend
+COPY requirements.txt requirements.txt
 RUN pip install -r requirements.txt
-CMD ["python", "api.py"]
+EXPOSE 8080
+COPY . .
+CMD ["gunicorn", "wsgi:app", "-w 2", "-b 0.0.0.0:8080", "-t 30"]
